@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taller 2: JS, Formularios y Web Storage</title>
+  <!-- Ejercicio 1: Separar estilos CSS en archivo externo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="contenedor">
+    <h1>Taller 2: JS, Formularios, Web Storage (LocalStorage y SessionStorage)</h1>
+    <p>En este taller trabajamos la lectura de <span class="destacado">formularios con JavaScript</span>, validaciones y almacenamiento en el navegador mediante Web Storage.</p>
+
+    <div class="caja">
+      <h2>1. Formulario básico</h2>
+      <form id="formulario">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" placeholder="Tu nombre completo" required>
+
+        <label for="email">Correo:</label>
+        <input type="email" id="email" placeholder="ejemplo@correo.cl" required>
+
+        <!-- Ejercicio 2 y 3: Campo edad con validación requerida -->
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" placeholder="Edad (mayor que 0)" min="1" required>
+
+        <label for="carrera">Carrera:</label>
+        <select id="carrera">
+          <option value="ici">ICI</option>
+          <option value="inf">INF</option>
+          <option value="icd">ICD</option>
+        </select>
+
+        <button type="submit">Mostrar datos</button>
+      </form>
+      <div id="resultado-formulario" class="resultado"></div>
+    </div>
+
+    <div class="caja">
+      <h2>2. LocalStorage</h2>
+      <p>Los datos almacenados aquí <span class="destacado">permanecen después de cerrar el navegador.</span></p>
+      <!-- Ejercicio 4: Guardar y leer nombre y email -->
+      <button onclick="guardarLocal()">Guardar datos (Nombre y Correo)</button>
+      <button class="btn-secundario" onclick="leerLocal()">Leer datos</button>
+      <button class="btn-peligro" onclick="borrarLocal()">Borrar datos</button>
+      <div id="resultado-local" class="resultado"></div>
+    </div>
+
+    <div class="caja">
+      <h2>3. SessionStorage</h2>
+      <p>Los datos almacenados aquí <span class="destacado">duran mientras exista la sesión de la pestaña.</span></p>
+      <button onclick="guardarSesion()">Guardar carrera</button>
+      <button class="btn-secundario" onclick="leerSesion()">Leer carrera</button>
+      <button class="btn-peligro" onclick="borrarSesion()">Borrar carrera</button>
+      <div id="resultado-sesion" class="resultado"></div>
+    </div>
+
+    <div class="caja">
+      <h2>4. Guardar un formulario completo (JSON)</h2>
+      <p>En esta sección convertimos los datos del formulario en un objeto y lo guardamos usando JSON.</p>
+      <!-- Ejercicio 5 y 6: Guardar formulario completo y recuperarlo -->
+      <button onclick="guardarFormulario()">Guardar formulario</button>
+      <button class="btn-secundario" onclick="recuperarFormulario()">Recuperar formulario</button>
+      <button class="btn-peligro" onclick="limpiarFormularioGuardado()">Eliminar datos guardados</button>
+      <div id="resultado-guardado" class="resultado"></div>
+    </div>
+
+    <!-- Desafío: Agenda de Contactos -->
+    <div class="caja">
+      <h2>5. Desafío: Agenda de Contactos</h2>
+      <p>Guarda una lista de contactos en un arreglo persistente con <code>localStorage</code>.</p>
+      <form id="form-contacto" onsubmit="agregarContacto(event)">
+        <label for="contacto-nombre">Nombre del contacto:</label>
+        <input type="text" id="contacto-nombre" placeholder="Nombre completo" required>
+        <label for="contacto-email">Correo del contacto:</label>
+        <input type="email" id="contacto-email" placeholder="correo@ejemplo.com" required>
+        <button type="submit">Agregar a la agenda</button>
+      </form>
+      <h3>Contactos guardados:</h3>
+      <ul id="lista-contactos" class="lista-contactos"></ul>
+    </div>
+  </div>
+
+  <!-- Ejercicio 1: Separar lógica JavaScript en archivo externo -->
+  <script src="script.js"></script>
+</body>
+</html>
